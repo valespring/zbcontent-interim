@@ -1,0 +1,50 @@
+.section-highlight {
+	color: white;
+	overflow: hidden;
+	//padding: var(--section-padding);
+
+	@include viewport(md-min) {
+		--vertical-padding: 136px;
+	}
+
+	@include viewport(md-max) {
+		--vertical-padding: 50px;
+	}
+
+	.container {
+		background: $light-blue;
+		position: relative;
+	}
+
+	.highlight-grid {
+		padding: var(--vertical-padding) var(--section-padding);
+		// display: grid;
+		// grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.highlight-shape__container {
+		@include viewport(lg-max) {
+			display: none;
+		}
+	}
+
+	.highlight-image {
+		margin: auto;
+		max-width: 400px;
+		padding-right: 20px;
+
+		@include viewport(md-min) {
+			transform: translateY(calc((var(--vertical-padding) / 2) * -1));
+		}
+
+		img {
+			max-width: 100%;
+		}
+	}
+
+	.highlight-content {
+		@include viewport(md-min) {
+			padding: 0 25px 0 50px;
+		}
+	}
+}

@@ -1,0 +1,69 @@
+@import 'vars';
+@import 'functions';
+@import 'mixins';
+@import 'type';
+@import 'normalize';
+
+// Base Variables
+:root {
+	
+	--container-max-width: 1200px;
+
+	@include viewport(md-min) {
+		--section-padding: 65px;
+	}
+
+	@include viewport(md-max) {
+		--section-padding: 40px;
+	}
+
+	
+}
+
+// Style
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+ol,
+ul {
+	li {
+		margin-top: 1em;
+	}
+}
+
+.container {
+	width: 92%;
+	max-width: var(--container-max-width);
+	@include margin-center();
+}
+
+.grid-row-halves-lg {
+	@include viewport(lg-min) {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+
+		&.gapped {
+			gap: 160px;
+		}
+	}
+}
+
+.grid-row-halves-md {
+	@include viewport(md-min) {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+
+		&.gapped {
+			gap: 160px;
+		}
+	}
+}
+
+// Sections
+@import 'interactive';
+@import 'modules';
+@import 'sections';

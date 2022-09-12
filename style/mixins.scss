@@ -1,0 +1,135 @@
+// Baseline Mixins
+@mixin margin-center() {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin viewport($key) {
+	$lg-bp-max: 1000px;
+	$lg-bp-min: $lg-bp-max - 1;
+	$md-bp-max: 768px;
+	$sm-bp-max: 480px;
+	$lg-bp-min: $lg-bp-max - 1;
+	$md-bp-min: $sm-bp-max + 1;
+
+	$query: '';
+
+	@if ($key == 'lg-min') {
+		$query: 'all and (min-width: #{$lg-bp-max})';
+	} @else if ($key == 'lg-max') {
+		$query: 'all and (max-width: #{$lg-bp-min})';
+	} @else if ($key == 'md-min') {
+		$query: 'all and (min-width: #{$md-bp-max})';
+	} @else if ($key == 'md-only') {
+		$query: 'all and (min-width: #{$md-bp-min}) and (max-width: #{$md-bp-max}';
+	} @else if ($key == 'md-max') {
+		$query: 'all and (max-width: #{$md-bp-max - 1})';
+	} @else if ($key == 'sm') {
+		$query: 'all and (max-width: #{$sm-bp-max})';
+	}
+
+	@media #{$query} {
+		@content;
+	}
+}
+
+// Funky Mixins
+@mixin path-border($direction) {
+	border-#{$direction}: solid var(--border-size) var(--line-color);
+}
+
+@mixin path-border-radius($direction) {
+	border-#{$direction}-radius: var(--border-radius);
+}
+
+@mixin path-dot($dot-color: $medium-green) {
+	content: '';
+	position: absolute;
+	height: var(--dot-size);
+	width: var(--dot-size);
+	background: $dot-color;
+	border-radius: 99px;
+}
+
+@mixin accent-path(
+	$stroke-size: 5px,
+	$stroke-color: #f00,
+	$background-color: #eee
+) {
+	// Variables
+	// 6 main, 2 small
+	$accent-dot-lg: 15px;
+	$accent-dot-sm: 8px;
+	$accent-space: 6px;
+	$accent-color: $stroke-color;
+	$last-accent-dot: ($accent-dot-lg * 6) + ($accent-space * 5);
+	--shadow: 0px 0 0px;
+
+	.path__accent {
+		margin: auto auto 0 auto;
+		width: $last-accent-dot + ($accent-dot-sm * 2) + ($accent-space * 2);
+		height: $stroke-size;
+		transform: translateY(var(--border-size));
+		background: $background-color;
+		position: relative;
+
+		// Extend the shape
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			height: $stroke-size;
+			background: $background-color;
+			border-radius: 999px;
+			width: $accent-dot-lg;
+		}
+
+		&:before {
+			left: -$accent-space;
+		}
+
+		&:after {
+			right: -$accent-space;
+		}
+	}
+
+	.path__accent--inner {
+		// Style
+		border-radius: 999px;
+		height: 100%;
+		width: $accent-dot-lg;
+		box-shadow: $accent-dot-lg var(--shadow) $accent-color,
+			(($accent-dot-lg * 2) + $accent-space) var(--shadow) $accent-color,
+			(($accent-dot-lg * 3) + ($accent-space * 2)) var(--shadow)
+				$accent-color,
+			(($accent-dot-lg * 4) + ($accent-space * 3)) var(--shadow)
+				$accent-color,
+			(($accent-dot-lg * 5) + ($accent-space * 4)) var(--shadow)
+				$accent-color,
+			$last-accent-dot var(--shadow) $accent-color;
+
+		position: relative;
+
+		&:before,
+		&:after {
+			content: '';
+			width: $accent-dot-sm;
+			background: $accent-color;
+			height: 100%;
+			display: block;
+			top: 0;
+			position: absolute;
+			border-radius: 999px;
+		}
+
+		&:before {
+			left: 0;
+		}
+
+		&:after {
+			right: -($last-accent-dot + ($accent-space * 2));
+		}
+	}
+}

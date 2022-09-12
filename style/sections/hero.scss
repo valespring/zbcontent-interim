@@ -1,0 +1,25 @@
+.section-hero {
+	background: $dark-blue;
+	color: white;
+	padding: 102px 0;
+	position: relative;
+	overflow: hidden;
+
+	.hero-animation {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+	}
+
+	.hero-content {
+		max-width: 50%;
+	}
+
+	.hero-headline {
+		margin-top: 0;
+
+		.hero-headline-accent {
+		}
+	}
+}

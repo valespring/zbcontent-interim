@@ -1,0 +1,38 @@
+.section-testimonials {
+	padding-bottom: 60px;
+
+	.container {
+		background: rgba(215, 229, 243, 0.5);
+		text-align: center;
+	}
+
+	img {
+		width: 75px;
+	}
+
+	// Slide
+	.testimonial-slide {
+		display: flex;
+		flex-direction: column;
+		padding: 100px 0;
+
+		.testimonial__content {
+			margin: auto 0;
+			padding: 0 50px;
+		}
+
+		.testimonial__quote {
+			max-width: 700px;
+			margin: 50px auto 0;
+		}
+
+		.testimonial__author {
+			display: block;
+			margin-top: 50px;
+		}
+
+		.testimonial__author--company {
+			color: $teal;
+		}
+	}
+}

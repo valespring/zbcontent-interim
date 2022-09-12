@@ -1,0 +1,236 @@
+.section-shapes {
+	--line-color: #a3bbda;
+	--line-accent: #f5a623;
+	--line-width: 600px;
+	--border-size: 5px;
+	--border-radius: 75px;
+	--dot-size: 30px;
+	--primary-left-offset: 200px;
+	--secondary-left-offset: 125px;
+	--secondary-path-top-height: 100px;
+	--secondary-path-bottom-height: 50px;
+	--secondary-path-accent-width: 200px;
+
+	.primary-path--bottom {
+		height: 140px;
+		margin-left: var(--primary-left-offset);
+		width: var(--line-width);
+		padding-left: var(--border-radius);
+		margin-top: calc(var(--border-size) * -1);
+
+		@include path-border(left);
+		@include path-border(top);
+		@include path-border-radius(top-left);
+	}
+
+	.primary-path__base {
+		// TODO: modularize this?
+		margin-left: calc(var(--primary-left-offset) + var(--border-radius));
+		margin-right: auto;
+		width: var(--line-width);
+		height: var(--line-height);
+		height: 140px;
+		position: relative;
+		padding-right: var(--border-radius);
+		display: flex;
+
+		@include path-border(bottom);
+		@include path-border(right);
+		@include path-border-radius(bottom-right);
+
+		// Accent dot
+		&:after {
+			@include path-dot();
+			top: -16px;
+			right: -17px;
+		}
+
+		@include accent-path(
+			$stroke-color: $marigold,
+			$background-color: white
+		);
+	}
+
+	// Pathing
+	.secondary-path__container {
+		text-align: right;
+	}
+
+	.secondary-path--top {
+		margin-left: var(--secondary-left-offset);
+		margin-right: var(--border-radius);
+		height: var(--secondary-path-top-height);
+		position: relative;
+
+		@include path-border(left);
+		@include path-border(bottom);
+		@include path-border-radius(bottom-left);
+
+		&:before {
+			@include path-dot();
+			top: -16px;
+			left: -17px;
+		}
+
+		&:after {
+			content: '';
+			width: 179px;
+			height: var(--border-size);
+			position: absolute;
+			bottom: calc(var(--border-size) * -1);
+			left: 25%;
+			background: $light-blue;
+		}
+	}
+
+	.secondary-path--mid {
+		min-height: 300px;
+		height: calc(
+			100% -
+				(
+					var(--secondary-path-top-height) +
+						var(--secondary-path-bottom-height)
+				)
+		);
+		margin-left: calc(100% - var(--secondary-path-accent-width));
+		margin-top: calc(var(--border-size) * -1);
+		display: flex;
+
+		@include path-border(top);
+		@include path-border(right);
+		@include path-border(bottom);
+		@include path-border-radius(top-right);
+		@include path-border-radius(bottom-right);
+	}
+
+	.secondary-path--bottom {
+		display: flex;
+		height: var(--secondary-path-bottom-height);
+		//width: 200px;
+		margin-top: calc(var(--border-size) * -1);
+		margin-right: var(--border-radius);
+		margin-left: calc(
+			100% - (var(--secondary-path-accent-width) + var(--border-radius))
+		);
+
+		@include path-border(top);
+		@include path-border(left);
+		@include path-border-radius(top-left);
+	}
+
+	.secondary-path__footer--top {
+		height: 200px;
+		margin-left: 55%;
+		margin-right: calc(var(--primary-left-offset) + var(--border-radius));
+
+		@include path-border(bottom);
+		@include path-border(right);
+		@include path-border-radius(bottom-right);
+	}
+
+	.secondary-path__footer--bottom {
+		height: 100px;
+		margin-left: calc(55% - var(--border-radius));
+		margin-right: calc(
+			var(--primary-left-offset) + (var(--border-radius) * 2)
+		);
+		margin-top: calc(var(--border-size) * -1);
+		position: relative;
+
+		@include path-border(top);
+		@include path-border(left);
+		@include path-border-radius(top-left);
+
+		&:before {
+			@include path-dot($teal);
+			bottom: -16px;
+			left: -17px;
+		}
+	}
+
+	// Highlight (Section specific)
+	.highlight-shape__container {
+		// Vars
+		--highlight-container-width: 30%;
+		//--highlight-first-shape-width: 300px;
+		--highlight-first-shape-height: 22%;
+		--highlight-second-shape-height: 450px;
+		--highlight-third-shape-height: calc(
+			(
+					100% -
+						(
+							var(--highlight-first-shape-height) +
+								var(--highlight-second-shape-height)
+						)
+				) + 2%
+		);
+		//--highlight-second-shape-height: calc((100% - (var(--highlight-first-shape-height) + var(--highlight-third-shape-height))) + 2%);
+
+		// Over 100% for border allocation
+
+		// Style
+		position: absolute;
+		left: var(--primary-left-offset);
+		height: 100%;
+		width: var(--highlight-container-width);
+
+		.highlight-shape--first {
+			height: var(--highlight-first-shape-height);
+
+			width: calc(100% - var(--border-radius));
+			border-bottom-left-radius: var(--border-radius);
+			border-left: solid var(--border-size) var(--line-color);
+			border-bottom: solid var(--border-size) var(--line-color);
+
+			&:before {
+				@include path-dot(white);
+				top: 30px;
+				left: -12px;
+			}
+		}
+
+		.highlight-shape--second {
+			margin-top: calc(var(--border-size) * -1);
+			margin-left: calc(100% - var(--border-radius));
+			height: var(--highlight-second-shape-height);
+			width: var(--highlight-second-shape-width);
+			border-top-right-radius: var(--border-radius);
+			border-bottom-right-radius: var(--border-radius);
+			border-top: solid var(--border-size) var(--line-color);
+			border-right: solid var(--border-size) var(--line-color);
+			border-bottom: solid var(--border-size) var(--line-color);
+			display: flex;
+			position: relative;
+
+			&:after {
+				@include path-dot($yellow);
+
+				// TODO: calc
+				height: 50px;
+				width: 50px;
+				border: solid 10px $light-blue;
+				top: 50%;
+				transform: translateY(-50%);
+				right: -27px;
+			}
+		}
+		.highlight-shape--third {
+			margin-top: calc(var(--border-size) * -1);
+			margin-left: calc(var(--border-radius) * -1);
+			width: 100%;
+			height: var(--highlight-third-shape-height);
+			border-top: solid var(--border-size) var(--line-color);
+			border-left: solid var(--border-size) var(--line-color);
+			border-top-left-radius: var(--border-radius);
+
+			@include accent-path(
+				$stroke-color: $medium-green,
+				$background-color: $light-blue
+			);
+
+			.path__accent {
+				transform: translateY(calc(var(--border-size) * -1));
+			}
+		}
+	}
+}

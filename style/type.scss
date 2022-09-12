@@ -1,0 +1,145 @@
+// H1
+// Avenir demibold
+// 54/74
+// H2
+// Avenir demibold
+// 48/65
+// H3
+// Avenir demibold
+// 36/51
+// H4
+// Avenir demibold
+// 30/41
+// H5
+// Avenir demibold
+// 24/33
+// Body
+// Avenir Medium
+// 20/30 (
+
+$font-path: '../files/fonts';
+
+@import url('https://fast.fonts.net/lt/1.css?apiType=css&c=7850d453-9e21-4b75-b2aa-7e8783e046f8&fontids=1475508,1475514,1475532,1475538,1475556,1475562');
+@font-face {
+	font-family: 'Avenir LT W01_45 Book1475508';
+	src: url('#{$font-path}/1475508/065a6b14-b2cc-446e-9428-271c570df0d9.woff2')
+			format('woff2'),
+		url('#{$font-path}/1475508/65d75eb0-2601-4da5-a9a4-9ee67a470a59.woff')
+			format('woff');
+}
+@font-face {
+	font-family: 'Avenir LT W01_45 Book O1475514';
+	src: url('#{$font-path}/1475514/476612d9-282d-4f76-95cd-b4dd31e7ed21.woff2')
+			format('woff2'),
+		url('#{$font-path}/1475514/f1ebae2b-5296-4244-8771-5f40e60a564a.woff')
+			format('woff');
+}
+@font-face {
+	font-family: 'Avenir LT W01_65 Medium1475532';
+	src: url('#{$font-path}/1475532/17b90ef5-b63f-457b-a981-503bb7afe3c0.woff2')
+			format('woff2'),
+		url('#{$font-path}/1475532/c9aeeabd-dd65-491d-b4be-3e0db9ae47a0.woff')
+			format('woff');
+}
+@font-face {
+	font-family: 'Avenir LT W01_65 Medium1475538';
+	src: url('#{$font-path}/1475538/deb5e718-7abb-4df3-9365-edfa95317090.woff2')
+			format('woff2'),
+		url('#{$font-path}/1475538/04801919-17ee-4c6b-8b17-eb1965cb3ed6.woff')
+			format('woff');
+}
+@font-face {
+	font-family: 'Avenir LT W01_95 Black1475556';
+	src: url('#{$font-path}/1475556/c78eb7af-a1c8-4892-974b-52379646fef4.woff2')
+			format('woff2'),
+		url('#{$font-path}/1475556/75b36c58-2a02-4057-a537-09af0832ae46.woff')
+			format('woff');
+}
+@font-face {
+	font-family: 'Avenir LT W01_95 Black 1475562';
+	src: url('#{$font-path}/1475562/a2477e08-09d9-4d4b-97a9-23a1e22cb44c.woff2')
+			format('woff2'),
+		url('#{$font-path}/1475562/19d12bba-92b1-43ad-9bab-cd36a4195c2a.woff')
+			format('woff');
+}
+
+$type-map: (
+	xxl: (
+		size: 54px,
+		leading: 74px
+	),
+	xl: (
+		size: 48px,
+		leading: 65px
+	),
+	lg: (
+		size: 36px,
+		leading: 51px
+	),
+	md: (
+		size: 30px,
+		leading: 41px
+	),
+	sm: (
+		size: 24px,
+		leading: 33px
+	),
+	body: (
+		size: 20px,
+		leading: 30px
+	)
+);
+
+$black-font: 'Avenir LT W01_95 Black1475556', Arial, sans-serif;
+$base-font: 'Avenir LT W01_45 Book1475508', Arial, sans-serif;
+$medium-font: 'Avenir LT W01_65 Medium1475532', Arial, sans-serif;
+
+html {
+	font-family: $base-font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin-top: 0;
+
+	+ p {
+		margin-top: 1.25em;
+	}
+}
+
+main p {
+	font-size: deep-map-get($type-map, 'body', 'size');
+	line-height: deep-map-get($type-map, 'body', 'leading');
+
+	strong {
+		font-family: $medium-font;
+	}
+}
+
+@each $key, $value in $type-map {
+	$type-size: deep-map-get($type-map, $key, 'size');
+	$type-leading: deep-map-get($type-map, $key, 'leading');
+
+	.type-black-#{$key} {
+		font-size: $type-size;
+		line-height: $type-leading;
+		font-family: $black-font;
+	}
+
+	.type-medium-#{$key} {
+		font-size: $type-size;
+		line-height: $type-leading;
+		font-family: $medium-font;
+	}
+
+	.type-#{$key} {
+		font-size: $type-size;
+		line-height: $type-leading;
+		font-family: $base-font;
+	}
+}

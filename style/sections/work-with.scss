@@ -1,0 +1,30 @@
+.section-work-with {
+	text-align: center;
+
+	// TODO: verify after doing shapes
+	padding-top: 100px;
+	padding-bottom: 47px;
+
+	.content-intro {
+		max-width: 700px;
+		margin: 0 auto;
+
+		p {
+			color: #848f9e;
+		}
+	}
+
+	.logo-grid {
+		margin: 57px 0;
+
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		grid-gap: 1rem;
+
+		img {
+			max-width: 100%;
+			margin: 0 auto;
+			padding: 25px;
+		}
+	}
+}

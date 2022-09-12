@@ -1,0 +1,15 @@
+{
+  "name": "zbcontent-interim",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write \"style/**/*.scss\""
+  },
+  "author": "",
+  "license": "ISC",
+  "prettier": "./node_modules/@valespring/code-config/prettier.config.js",
+  "devDependencies": {
+    "@valespring/code-config": "^1.0.6"
+  }
+}
