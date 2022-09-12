@@ -9,6 +9,13 @@
 		max-width: 700px;
 		margin: 0 auto;
 
+		h2 {
+			@include viewport(md-max) {
+				max-width: 300px;
+				margin: 0 auto;
+			}
+		}
+
 		p {
 			color: #848f9e;
 		}
@@ -20,6 +27,12 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 		grid-gap: 1rem;
+		justify-items: center;
+		align-items: center;
+
+		@include viewport(md-max) {
+			grid-template-columns: repeat(2, 1fr);
+		}
 
 		img {
 			max-width: 100%;

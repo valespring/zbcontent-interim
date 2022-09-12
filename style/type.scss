@@ -63,33 +63,6 @@ $font-path: '../files/fonts';
 			format('woff');
 }
 
-$type-map: (
-	xxl: (
-		size: 54px,
-		leading: 74px
-	),
-	xl: (
-		size: 48px,
-		leading: 65px
-	),
-	lg: (
-		size: 36px,
-		leading: 51px
-	),
-	md: (
-		size: 30px,
-		leading: 41px
-	),
-	sm: (
-		size: 24px,
-		leading: 33px
-	),
-	body: (
-		size: 20px,
-		leading: 30px
-	)
-);
-
 $black-font: 'Avenir LT W01_95 Black1475556', Arial, sans-serif;
 $base-font: 'Avenir LT W01_45 Book1475508', Arial, sans-serif;
 $medium-font: 'Avenir LT W01_65 Medium1475532', Arial, sans-serif;
@@ -121,25 +94,27 @@ main p {
 	}
 }
 
-@each $key, $value in $type-map {
+@mixin type-size-key($key) {
 	$type-size: deep-map-get($type-map, $key, 'size');
 	$type-leading: deep-map-get($type-map, $key, 'leading');
 
+	font-size: $type-size;
+	line-height: $type-leading;
+}
+
+@each $key, $value in $type-map {
 	.type-black-#{$key} {
-		font-size: $type-size;
-		line-height: $type-leading;
+		@include type-size-key($key);
 		font-family: $black-font;
 	}
 
 	.type-medium-#{$key} {
-		font-size: $type-size;
-		line-height: $type-leading;
+		@include type-size-key($key);
 		font-family: $medium-font;
 	}
 
 	.type-#{$key} {
-		font-size: $type-size;
-		line-height: $type-leading;
+		@include type-size-key($key);
 		font-family: $base-font;
 	}
 }

@@ -12,43 +12,72 @@
 	--secondary-path-accent-width: 200px;
 
 	.primary-path--bottom {
-		height: 140px;
-		margin-left: var(--primary-left-offset);
-		width: var(--line-width);
-		padding-left: var(--border-radius);
-		margin-top: calc(var(--border-size) * -1);
+		@include viewport(lg-min) {
+			height: 140px;
+			margin-left: var(--primary-left-offset);
+			width: var(--line-width);
+			padding-left: var(--border-radius);
+			margin-top: calc(var(--border-size) * -1);
 
-		@include path-border(left);
-		@include path-border(top);
-		@include path-border-radius(top-left);
+			@include path-border(left);
+			@include path-border(top);
+			@include path-border-radius(top-left);
+		}
 	}
 
 	.primary-path__base {
-		// TODO: modularize this?
-		margin-left: calc(var(--primary-left-offset) + var(--border-radius));
-		margin-right: auto;
-		width: var(--line-width);
-		height: var(--line-height);
-		height: 140px;
-		position: relative;
-		padding-right: var(--border-radius);
-		display: flex;
+		@include viewport(lg-min) {
+			// TODO: modularize this?
+			margin-left: calc(
+				var(--primary-left-offset) + var(--border-radius)
+			);
+			margin-right: auto;
+			width: var(--line-width);
+			height: var(--line-height);
+			height: 140px;
+			position: relative;
+			padding-right: var(--border-radius);
+			display: flex;
 
-		@include path-border(bottom);
-		@include path-border(right);
-		@include path-border-radius(bottom-right);
+			@include path-border(bottom);
+			@include path-border(right);
+			@include path-border-radius(bottom-right);
 
-		// Accent dot
-		&:after {
-			@include path-dot();
-			top: -16px;
-			right: -17px;
+			// Accent dot
+			&:after {
+				@include path-dot();
+				top: -16px;
+				right: -17px;
+			}
+
+			@include accent-path(
+				$stroke-color: $marigold,
+				$background-color: white
+			);
 		}
 
-		@include accent-path(
-			$stroke-color: $marigold,
-			$background-color: white
-		);
+		// @include viewport(lg-max) {
+		// 	height: 140px;
+		// 	position: relative;
+
+		// 	&:before {
+		// 		content: '';
+		// 		width: var(--border-size);
+		// 		height: 100%;
+		// 		background: var(--line-color);
+		// 		position: absolute;
+		// 		top: 0;
+		// 		left: 50%;
+		// 		transform: translateX(-50%);
+		// 	}
+
+		// 	&:after {
+		// 		@include path-dot();
+		// 		top: 0;
+		// 		left: 50%;
+		// 		transform: translateX(-50%);
+		// 	}
+		// }
 	}
 
 	// Pathing
@@ -56,95 +85,100 @@
 		text-align: right;
 	}
 
-	.secondary-path--top {
-		margin-left: var(--secondary-left-offset);
-		margin-right: var(--border-radius);
-		height: var(--secondary-path-top-height);
-		position: relative;
+	@include viewport(lg-min) {
+		.secondary-path--top {
+			margin-left: var(--secondary-left-offset);
+			margin-right: var(--border-radius);
+			height: var(--secondary-path-top-height);
+			position: relative;
 
-		@include path-border(left);
-		@include path-border(bottom);
-		@include path-border-radius(bottom-left);
+			@include path-border(left);
+			@include path-border(bottom);
+			@include path-border-radius(bottom-left);
 
-		&:before {
-			@include path-dot();
-			top: -16px;
-			left: -17px;
+			&:before {
+				@include path-dot();
+				top: -16px;
+				left: -17px;
+			}
+
+			&:after {
+				content: '';
+				width: 179px;
+				height: var(--border-size);
+				position: absolute;
+				bottom: calc(var(--border-size) * -1);
+				left: 25%;
+				background: $light-blue;
+			}
 		}
 
-		&:after {
-			content: '';
-			width: 179px;
-			height: var(--border-size);
-			position: absolute;
-			bottom: calc(var(--border-size) * -1);
-			left: 25%;
-			background: $light-blue;
+		.secondary-path--mid {
+			min-height: 300px;
+			height: calc(
+				100% -
+					(
+						var(--secondary-path-top-height) +
+							var(--secondary-path-bottom-height)
+					)
+			);
+			margin-left: calc(100% - var(--secondary-path-accent-width));
+			margin-top: calc(var(--border-size) * -1);
+			display: flex;
+
+			@include path-border(top);
+			@include path-border(right);
+			@include path-border(bottom);
+			@include path-border-radius(top-right);
+			@include path-border-radius(bottom-right);
 		}
-	}
 
-	.secondary-path--mid {
-		min-height: 300px;
-		height: calc(
-			100% -
-				(
-					var(--secondary-path-top-height) +
-						var(--secondary-path-bottom-height)
-				)
-		);
-		margin-left: calc(100% - var(--secondary-path-accent-width));
-		margin-top: calc(var(--border-size) * -1);
-		display: flex;
+		.secondary-path--bottom {
+			display: flex;
+			height: var(--secondary-path-bottom-height);
+			//width: 200px;
+			margin-top: calc(var(--border-size) * -1);
+			margin-right: var(--border-radius);
+			margin-left: calc(
+				100% -
+					(var(--secondary-path-accent-width) + var(--border-radius))
+			);
 
-		@include path-border(top);
-		@include path-border(right);
-		@include path-border(bottom);
-		@include path-border-radius(top-right);
-		@include path-border-radius(bottom-right);
-	}
+			@include path-border(top);
+			@include path-border(left);
+			@include path-border-radius(top-left);
+		}
 
-	.secondary-path--bottom {
-		display: flex;
-		height: var(--secondary-path-bottom-height);
-		//width: 200px;
-		margin-top: calc(var(--border-size) * -1);
-		margin-right: var(--border-radius);
-		margin-left: calc(
-			100% - (var(--secondary-path-accent-width) + var(--border-radius))
-		);
+		.secondary-path__footer--top {
+			height: 200px;
+			margin-left: 55%;
+			margin-right: calc(
+				var(--primary-left-offset) + var(--border-radius)
+			);
 
-		@include path-border(top);
-		@include path-border(left);
-		@include path-border-radius(top-left);
-	}
+			@include path-border(bottom);
+			@include path-border(right);
+			@include path-border-radius(bottom-right);
+		}
 
-	.secondary-path__footer--top {
-		height: 200px;
-		margin-left: 55%;
-		margin-right: calc(var(--primary-left-offset) + var(--border-radius));
+		.secondary-path__footer--bottom {
+			height: 100px;
+			margin-left: calc(55% - var(--border-radius));
+			margin-right: calc(
+				var(--primary-left-offset) + (var(--border-radius) * 2)
+			);
+			margin-top: calc(var(--border-size) * -1);
+			position: relative;
 
-		@include path-border(bottom);
-		@include path-border(right);
-		@include path-border-radius(bottom-right);
-	}
+			@include path-border(top);
+			@include path-border(left);
+			@include path-border-radius(top-left);
 
-	.secondary-path__footer--bottom {
-		height: 100px;
-		margin-left: calc(55% - var(--border-radius));
-		margin-right: calc(
-			var(--primary-left-offset) + (var(--border-radius) * 2)
-		);
-		margin-top: calc(var(--border-size) * -1);
-		position: relative;
-
-		@include path-border(top);
-		@include path-border(left);
-		@include path-border-radius(top-left);
-
-		&:before {
-			@include path-dot($teal);
-			bottom: -16px;
-			left: -17px;
+			&:before {
+				@include path-dot($teal);
+				bottom: -16px;
+				left: -17px;
+			}
 		}
 	}
 

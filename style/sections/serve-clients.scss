@@ -1,4 +1,31 @@
 .section-serve-clients {
+	.section__header--rule {
+		@include viewport(lg-max) {
+			margin: 60px auto;
+			border-left: solid 5px $light-blue;
+			width: 5px;
+			height: 120px;
+			position: relative;
+
+			// &:before {
+			// 	@include path-dot();
+			// 	left: 50%;
+			// 	bottom: 5px;
+			// 	transform: translateX(-50%);
+			// 	width: 20px;
+			// 	height: 20px;
+			// 	border: solid 5px white;
+			// 	border-radius: 999px;
+
+			// }
+		}
+	}
+
+	.section__header--headline {
+		@include viewport(md-max) {
+			@include type-size-key(md);
+		}
+	}
 	.section__header {
 		display: grid;
 		grid-template-columns: 1fr;
@@ -13,6 +40,10 @@
 			text-align: center;
 			max-width: 700px;
 			margin: 200px auto auto;
+
+			@include viewport(lg-max) {
+				margin-top: 0;
+			}
 
 			.accent-green {
 				color: $medium-green;

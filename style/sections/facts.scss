@@ -1,3 +1,9 @@
 .section-facts {
-	padding-top: 214px;
+	@include viewport(md-min) {
+		padding-top: 214px;
+	}
+
+	@include viewport(md-max) {
+		padding-top: 100px;
+	}
 }

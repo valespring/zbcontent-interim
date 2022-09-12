@@ -6,7 +6,6 @@
 
 // Base Variables
 :root {
-	
 	--container-max-width: 1200px;
 
 	@include viewport(md-min) {
@@ -16,8 +15,6 @@
 	@include viewport(md-max) {
 		--section-padding: 40px;
 	}
-
-	
 }
 
 // Style
@@ -39,6 +36,10 @@ ul {
 	width: 92%;
 	max-width: var(--container-max-width);
 	@include margin-center();
+
+	@include viewport(md-max) {
+		width: 90%;
+	}
 }
 
 .grid-row-halves-lg {

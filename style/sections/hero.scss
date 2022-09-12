@@ -5,15 +5,55 @@
 	position: relative;
 	overflow: hidden;
 
+	--animation-width: 778px;
+
+	@include viewport(md-max) {
+		padding: 60px 0;
+	}
+
 	.hero-animation {
 		position: absolute;
-		top: 0;
+		z-index: 1;
+		bottom: -5px;
 		right: 0;
-		height: 100%;
+		width: var(--animation-width);
+		// TODO: large bleed
+
+		@include viewport(lg-max) {
+			right: -120px;
+		}
+
+		@include viewport(md-max) {
+			opacity: 0.15;
+			width: 700px;
+		}
+	}
+
+	.hero-container {
+		position: relative;
+		z-index: 2;
+	}
+
+	.hero-headline {
+		@include viewport(md-max) {
+			@include type-size-key(lg);
+		}
 	}
 
 	.hero-content {
-		max-width: 50%;
+		@include viewport(md-min) {
+			max-width: 50%;
+		}
+
+		@include viewport(md-max) {
+			text-align: center;
+		}
+	}
+
+	.button-container {
+		@include viewport(md-max) {
+			text-align: center;
+		}
 	}
 
 	.hero-headline {

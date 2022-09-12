@@ -1,3 +1,30 @@
+$type-map: (
+	xxl: (
+		size: 54px,
+		leading: 74px
+	),
+	xl: (
+		size: 48px,
+		leading: 65px
+	),
+	lg: (
+		size: 36px,
+		leading: 51px
+	),
+	md: (
+		size: 30px,
+		leading: 41px
+	),
+	sm: (
+		size: 24px,
+		leading: 33px
+	),
+	body: (
+		size: 20px,
+		leading: 30px
+	)
+);
+
 $dark-blue: #0a203d;
 $light-blue: #5593e3;
 $medium-green: #31bf5d;

@@ -21,7 +21,7 @@
 	} @else if ($key == 'md-min') {
 		$query: 'all and (min-width: #{$md-bp-max})';
 	} @else if ($key == 'md-only') {
-		$query: 'all and (min-width: #{$md-bp-min}) and (max-width: #{$md-bp-max}';
+		$query: 'all and (min-width: #{$md-bp-min}) and (max-width: #{$md-bp-max})';
 	} @else if ($key == 'md-max') {
 		$query: 'all and (max-width: #{$md-bp-max - 1})';
 	} @else if ($key == 'sm') {

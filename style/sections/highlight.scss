@@ -7,9 +7,15 @@
 		--vertical-padding: 136px;
 	}
 
+	@include viewport(lg-max) {
+		margin-top: 50px;
+	}
+
 	@include viewport(md-max) {
 		--vertical-padding: 50px;
 	}
+
+	// TODO md-lg spacing
 
 	.container {
 		background: $light-blue;
@@ -45,6 +51,14 @@
 	.highlight-content {
 		@include viewport(md-min) {
 			padding: 0 25px 0 50px;
+		}
+	}
+
+	.highlight-headline {
+		@include viewport(md-max) {
+			@include type-size-key(md);
+
+			margin-top: 50px;
 		}
 	}
 }
