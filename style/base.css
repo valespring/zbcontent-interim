@@ -1201,6 +1201,11 @@ ul li {
 .section-what-we-do ol {
   padding-left: 18px;
 }
+@media all and (min-width: 768px) {
+  .section-what-we-do .what-we-do-more {
+    margin-top: 106px;
+  }
+}
 
 @media all and (max-width: 999px) {
   .section-serve-clients .section__header--rule {
@@ -1405,6 +1410,7 @@ ul li {
   max-width: 100%;
   margin: 0 auto;
   padding: 25px;
+  opacity: 0.45;
 }
 
 .section-testimonials {

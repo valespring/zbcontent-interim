@@ -13,4 +13,10 @@
 	ol {
 		padding-left: 18px;
 	}
+
+	.what-we-do-more {
+		@include viewport(md-min) {
+			margin-top: 106px;
+		}
+	}
 }
