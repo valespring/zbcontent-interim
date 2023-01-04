@@ -25,10 +25,26 @@
 	box-sizing: border-box;
 }
 
-ol,
-ul {
-	li {
-		margin-top: 1em;
+// Override default on wordpress
+.home-22 {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: inherit;
+	}
+
+	ol,
+	ul {
+		font-size: initial !important;
+		line-height: initial !important;
+		list-style-type: initial !important;
+
+		li {
+			margin-top: 1em;
+		}
 	}
 }
 

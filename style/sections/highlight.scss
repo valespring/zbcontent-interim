@@ -39,7 +39,7 @@
 		max-width: 400px;
 		padding-right: 20px;
 
-		@include viewport(md-min) {
+		@include viewport(md-only) {
 			transform: translateY(calc((var(--vertical-padding) / 2) * -1));
 		}
 

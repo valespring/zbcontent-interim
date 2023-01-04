@@ -493,8 +493,22 @@ template {
   box-sizing: border-box;
 }
 
-ol li,
-ul li {
+.home-22 h1,
+.home-22 h2,
+.home-22 h3,
+.home-22 h4,
+.home-22 h5,
+.home-22 h6 {
+  color: inherit;
+}
+.home-22 ol,
+.home-22 ul {
+  font-size: initial !important;
+  line-height: initial !important;
+  list-style-type: initial !important;
+}
+.home-22 ol li,
+.home-22 ul li {
   margin-top: 1em;
 }
 
@@ -1165,7 +1179,7 @@ ul li {
   max-width: 400px;
   padding-right: 20px;
 }
-@media all and (min-width: 768px) {
+@media all and (min-width: 481px) and (max-width: 768px) {
   .section-highlight .highlight-image {
     transform: translateY(calc(var(--vertical-padding) / 2 * -1));
   }
@@ -1294,6 +1308,7 @@ ul li {
   position: relative;
   transform-style: preserve-3d;
   overflow: hidden;
+  min-height: 300px;
 }
 .section-serve-clients .interactive-cards .card .card-front,
 .section-serve-clients .interactive-cards .card .card-back {
@@ -1383,6 +1398,7 @@ ul li {
 .section-work-with .content-intro {
   max-width: 700px;
   margin: 0 auto;
+  text-align: center;
 }
 @media all and (max-width: 767px) {
   .section-work-with .content-intro h2 {

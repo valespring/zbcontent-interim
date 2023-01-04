@@ -1,11 +1,13 @@
+include partials/vars.slim
+
 section.section-testimonials
   .container
     section.carousel aria-label="Gallery" 
       ol.carousel__viewport
         li#carousel__slide1.carousel__slide.testimonial-slide tabindex="0" 
           .testimonial__content
-           img src="files/svg/quote.svg"
-            p.testimonial__quote.type-medium-lg
+           img src="#{filepath}svg/quote.svg"
+            p.testimonial__quote.type-medium-md
               | Zettabyte’s become an invaluable resource because he understands the industry as well as how to communicate effectively. Their ability to work with our executives to disseminate complex ideas accelerated our thought leadership initiatives.
               span.testimonial__author.type-medium-sm
                 | Ashley Sturm
@@ -15,8 +17,8 @@ section.section-testimonials
           .carousel__snapper
         li#carousel__slide2.carousel__slide.testimonial-slide tabindex="0" 
           .testimonial__content
-            img src="files/svg/quote.svg"
-            p.testimonial__quote.type-medium-lg
+            img src="#{filepath}svg/quote.svg"
+            p.testimonial__quote.type-medium-md
               | Their experience and subject matter expertise, especially in enterprise storage and servers, is exceptional and have been incredibly refreshing in a field full of imposters. I rely on Zettabyte to help my team with complex projects that require a significant depth of knowledge and staying up to date with a very dynamic market.
               span.testimonial__author.type-medium-sm
                 | Drew Schlussel
@@ -26,8 +28,8 @@ section.section-testimonials
           .carousel__snapper
         li#carousel__slide3.carousel__slide.testimonial-slide tabindex="0" 
           .testimonial__content
-            img src="files/svg/quote.svg"
-            p.testimonial__quote.type-medium-lg
+            img src="#{filepath}svg/quote.svg"
+            p.testimonial__quote.type-medium-md
               | They’re amazing and easy to work with—whether it’s helping define content strategy, providing competitive analysis or mentoring young writers. I recommend Brian without hesitation as he has been essential in helping us develop our content&nbsp;engine.
               span.testimonial__author.type-medium-sm
                 | Dee Hall Mendes, MBA
